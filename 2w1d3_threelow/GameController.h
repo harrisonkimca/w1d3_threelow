@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class Dice;
+
 @interface GameController : NSObject
+
+@property (strong, nonatomic) NSMutableArray *dice;
+@property (strong, nonatomic) NSMutableSet *held;
+
+- (instancetype) init;
+- (void) roll;
+
 
 @end

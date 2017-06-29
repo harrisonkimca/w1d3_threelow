@@ -10,4 +10,7 @@
 
 @interface Dice : NSObject
 
+@property (nonatomic) NSInteger value;
+@property (strong, nonatomic) NSString *face;
+
 @end

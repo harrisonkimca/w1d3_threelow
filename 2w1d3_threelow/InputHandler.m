@@ -10,4 +10,14 @@
 
 @implementation InputHandler
 
+- (NSString*) inputForPrompt: (NSString*)promptString
+{
+    NSLog(@"%@", promptString);
+    
+    char userChar [255];
+    fgets(userChar, 255, stdin);
+    NSString *inputString = [[NSString stringWithUTF8String:userChar] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return inputString;
+}
+
 @end

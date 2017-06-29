@@ -10,4 +10,8 @@
 
 @interface InputHandler : NSObject
 
+@property (strong, nonatomic) NSMutableArray *commands;
+
+- (NSString*) inputForPrompt: (NSString*)promptString;
+
 @end
