@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
         
         while (gameOn)
         {
-            NSString *cmd = [input inputForPrompt:@"roll or quit?"];
+            NSString *cmd = [input inputForPrompt:@"roll, show, score, reset or quit?"];
             
             // escape condition
             if ([cmd isEqualToString:@"quit"])
@@ -67,8 +67,20 @@ int main(int argc, const char * argv[]) {
                 while (holdLoop);
             } // end roll loop
             
+            else if ([cmd isEqualToString:@"reset"])
+            {
+                [gameController resetDice];
+            }
             
+            else if ([cmd isEqualToString:@"score"])
+            {
+                NSLog(@"Score: %d", [gameController score]);
+            }
             
+            else if ([cmd isEqualToString:@"show"])
+            {
+                NSLog(@"%@", [gameController description]);
+            }
             
             else
             {

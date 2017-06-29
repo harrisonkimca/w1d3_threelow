@@ -19,37 +19,56 @@ const int kMAX_DICE = 5;
     if (self) {
         _dice = [[NSMutableArray alloc]init];
         _held = [[NSMutableSet alloc]init];
+        _numberOfRolls = 0;
     }
     return self;
 }
 
 - (void) roll
 {
-    // reset before every roll
-    [self.dice removeAllObjects];
-    // add back held dice
-    for (Dice *dice in self.held)
+    if (self.numberOfRolls != 5)
     {
-        [self.dice addObject:dice];
+        // roll counter
+        self.numberOfRolls ++;
+        // reset before every roll
+        [self.dice removeAllObjects];
+        // add back held dice
+        for (Dice *dice in self.held)
+        {
+            [self.dice addObject:dice];
+        }
+        // roll as many dice that are not held (specific dice do not matter)
+        for (int i = 0; i < kMAX_DICE - self.held.count; i++)
+        {
+            Dice *singleDice = [[Dice alloc]init];
+            [self.dice addObject:singleDice];
+        }
     }
-    // roll as many dice that are not held (specific dice do not matter)
-    for (int i = 0; i < kMAX_DICE - self.held.count; i++)
+    else
     {
-        Dice *singleDice = [[Dice alloc]init];
-        [self.dice addObject:singleDice];
+        NSLog(@"You must reset after 5 rolls");
+        NSLog(@"Final score: %d\n", [self score]);
+        [self resetDice];
+        self.numberOfRolls = 0;
     }
     NSLog(@"%@", self);
 }
 
-- (void)holdDie:(Dice*)dice
+- (void) holdDie:(Dice*)dice
 {
-    [self.held addObject:dice];
-    //NSLog(@"%@", self);
+    if ([self.held containsObject:dice])
+    {
+        [self.held removeObject:dice];
+    }
+    else
+    {
+        [self.held addObject:dice];
+    }
 }
 
-- (void)resetDice
+- (void) resetDice
 {
-    [self.dice removeAllObjects];
+    [self.held removeAllObjects];
 }
 
 - (int)score
@@ -65,10 +84,11 @@ const int kMAX_DICE = 5;
     return score;
 }
 
-- (NSString*)description
+- (NSString*) description
 {
     // description for roll
-    NSString *description = @"Here is your roll\n";
+    //NSString *description = @"Here is your roll\n";
+    NSString *description = [NSString stringWithFormat:@"Number of rolls: %d\n", self.numberOfRolls];
     
     // description for dice/held
     for (Dice *dice in self.dice)
@@ -84,6 +104,7 @@ const int kMAX_DICE = 5;
     }
     
     // description for score
+    description = [description stringByAppendingString:[NSString stringWithFormat:@"Score: %d\n", [self score]]];
     
     return description;
 }

@@ -14,11 +14,13 @@
 
 @property (strong, nonatomic) NSMutableArray *dice;
 @property (strong, nonatomic) NSMutableSet *held;
+@property (nonatomic) int numberOfRolls;
 
 - (instancetype) init;
 - (void) roll;
-- (void)holdDie:(Dice*)dice;
-- (void)resetDice;
+- (void) holdDie:(Dice*)dice;
+- (void) resetDice;
+- (int) score;
 
 
 
