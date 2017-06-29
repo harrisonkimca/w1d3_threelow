@@ -17,6 +17,10 @@
 
 - (instancetype) init;
 - (void) roll;
+- (void)holdDie:(Dice*)dice;
+- (void)resetDice;
+
+
 
 
 @end

@@ -67,12 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				881F82561F045AC900BF4874 /* main.m */,
-				881F825D1F045B3D00BF4874 /* InputHandler.h */,
-				881F825E1F045B3D00BF4874 /* InputHandler.m */,
 				881F82631F045B5C00BF4874 /* GameController.h */,
 				881F82641F045B5C00BF4874 /* GameController.m */,
 				881F82601F045B4B00BF4874 /* Dice.h */,
 				881F82611F045B4B00BF4874 /* Dice.m */,
+				881F825D1F045B3D00BF4874 /* InputHandler.h */,
+				881F825E1F045B3D00BF4874 /* InputHandler.m */,
 			);
 			path = 2w1d3_threelow;
 			sourceTree = "<group>";
@@ -266,6 +266,7 @@
 				881F825C1F045AC900BF4874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
